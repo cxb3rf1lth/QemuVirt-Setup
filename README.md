@@ -32,5 +32,5 @@ cd Desktop
 git clone https://github.com/cxb3rf1lth/QemuVirt-Setup.git
 cd QemuVirt-Setup
 chmod +x autovirt-setup.sh
-sudo ./zedvirt-install.sh
+sudo ./autovirt-setup.sh
 
