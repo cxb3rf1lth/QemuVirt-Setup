@@ -1,69 +1,35 @@
-# QemuVirt-Setup
-Simply open a terminal and follow the steps below.After setup is complete you can refer to the Lab-setup repository to install and set up your first virtual machine.
-### Install Everything:
+# 🧨 ZedVirt Arch Hypervisor Auto-Installer
 
-```
-sudo pacman -Syu --noconfirm && \
-sudo pacman -S --noconfirm qemu-full virt-manager libvirt dnsmasq vde2 bridge-utils openbsd-netcat ebtables iptables-nft
-```
+**ZedVirt** is a full-spectrum, automated Arch Linux script that transforms your system into a QEMU/KVM virtualization powerhouse — perfect for malware analysis, red teaming, OS sandboxing, and Windows VM optimization with SPICE, VirtIO, and UEFI support.
 
-### Enable and Start Services:
-```
-sudo systemctl enable --now libvirtd
+---
 
-```
-### Add Your User to libvirt Group:
+## 🚀 Features
 
-```
-sudo usermod -aG libvirt $(whoami)
-```
+- ✅ Installs QEMU, libvirt, virt-manager, SPICE, and OVMF
+- ✅ Fixes `iptables` conflicts cleanly by switching to nftables
+- ✅ Loads KVM modules for Intel/AMD
+- ✅ Enables libvirt daemon and default network
+- ✅ Adds user to `libvirt` and `kvm` groups
+- ✅ Sets UEFI (OVMF) boot for Windows guests
+- ✅ Downloads VirtIO ISO (optional) for guest drivers
+- ✅ Fully unattended — reboot and build VMs immediately
 
-### Apply Group Changes:
+---
 
-```
-newgrp libvirt
-```
+## ⚙️ Requirements
 
-### Test:
+- Arch Linux (or derivative like Manjaro/EndeavourOS)
+- sudo access
+- Network connection
 
-```
-virsh list --all
-```
+---
 
-    Note: For GPU passthrough or advanced virtualization, also enable iommu in your GRUB settings.
+## 🛠️ Installation
 
-##  UBUNTU/DEBIAN: QEMU + LIBVIRT + VIRT-MANAGER FULL SETUP
-### Install Core Virtualization Stack:
+```bash
+git clone 
+cd zedvirt-installer
+chmod +x autovirt-setup.sh
+./zedvirt-install.sh
 
-```
-sudo apt update && \
-sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients virt-manager bridge-utils dnsmasq-utils
-
-```
-###  Enable libvirt:
-
-```
-sudo systemctl enable --now libvirtd
-```
-
-
-### Add User to Groups:
-
-```
-sudo adduser $(whoami) libvirt && \
-sudo adduser $(whoami) libvirt-qemu
-```
-
-###  Apply Group Changes:
-
-```
-newgrp libvirt
-```
-
-###  Confirm It’s Working:
-
-```
-virsh list --all
-
-```
-    Tip for Ubuntu GUI users: You can launch virt-manager from Activities or run virt-manager in terminal to start managing VMs graphically.
