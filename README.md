@@ -1,4 +1,4 @@
-#  ZedVirt Arch Hypervisor Auto-Installer
+#  Qemu-full Arch Hypervisor Auto-Installer
 
 **ZedVirt** is a full-spectrum, automated Arch Linux script that transforms your system into a QEMU/KVM virtualization powerhouse — perfect for malware analysis, red teaming, OS sandboxing, and Windows VM optimization with SPICE, VirtIO, and UEFI support.
 
