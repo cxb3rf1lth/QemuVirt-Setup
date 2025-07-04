@@ -1,4 +1,5 @@
 # QemuVirt-Setup
+Simply open a terminal and follow the steps below.After setup is complete you can refer to the Lab-setup repository to install and set up your first virtual machine.
 ### Install Everything:
 
 ```
