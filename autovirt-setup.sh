@@ -67,6 +67,49 @@ check_virtualization_support() {
     log_success "Hardware virtualization support detected"
 }
 
+# Function to show help
+show_help() {
+    echo "ZedVirt Auto-Installer for Arch Linux v2.0"
+    echo
+    echo "DESCRIPTION:"
+    echo "    Automated QEMU/KVM virtualization setup script for Arch Linux"
+    echo "    Transforms your system into a virtualization powerhouse with"
+    echo "    SPICE, VirtIO, and UEFI support."
+    echo
+    echo "USAGE:"
+    echo "    sudo $0 [options]"
+    echo
+    echo "OPTIONS:"
+    echo "    -h, --help     Show this help message"
+    echo "    -v, --version  Show version information"
+    echo
+    echo "REQUIREMENTS:"
+    echo "    - Arch Linux (or derivative)"
+    echo "    - sudo privileges"
+    echo "    - Internet connection"
+    echo "    - Hardware virtualization support"
+    echo
+    echo "FEATURES:"
+    echo "    • Installs QEMU, libvirt, virt-manager, SPICE, and OVMF"
+    echo "    • Fixes iptables conflicts by switching to nftables"
+    echo "    • Loads KVM modules for Intel/AMD"
+    echo "    • Enables libvirt daemon and default network"
+    echo "    • Adds user to libvirt and kvm groups"
+    echo "    • Sets UEFI (OVMF) boot for Windows guests"
+    echo "    • Downloads VirtIO ISO for guest drivers"
+    echo "    • Comprehensive verification and error handling"
+    echo
+    echo "For more information, visit: https://github.com/cxb3rf1lth/QemuVirt-Setup"
+    echo
+}
+
+# Function to show version
+show_version() {
+    echo "ZedVirt Auto-Installer v2.0"
+    echo "License: MIT"
+    echo "Author: cxb3rf1lth"
+    echo
+}
 # Function to confirm destructive operations
 confirm_operation() {
     read -p "This script will modify your system and install virtualization packages. Continue? (y/N): " -n 1 -r
@@ -77,8 +120,33 @@ confirm_operation() {
     fi
 }
 
+# Parse command line arguments
+parse_arguments() {
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            -h|--help)
+                show_help
+                exit 0
+                ;;
+            -v|--version)
+                show_version
+                exit 0
+                ;;
+            *)
+                log_error "Unknown option: $1"
+                echo "Use -h or --help for usage information"
+                exit 1
+                ;;
+        esac
+        shift
+    done
+}
+
 # Main execution starts here
 main() {
+    # Parse command line arguments first
+    parse_arguments "$@"
+    
     log_info "Starting ZedVirt Auto-Installer..."
     
     # Pre-flight checks

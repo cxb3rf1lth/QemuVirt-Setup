@@ -6,22 +6,31 @@
 
 ## Features
 
--  Installs QEMU, libvirt, virt-manager, SPICE, and OVMF
--  Fixes `iptables` conflicts cleanly by switching to nftables
--  Loads KVM modules for Intel/AMD
--  Enables libvirt daemon and default network
--  Adds user to `libvirt` and `kvm` groups
--  Sets UEFI (OVMF) boot for Windows guests
--  Downloads VirtIO ISO (optional) for guest drivers
--  Fully unattended — reboot and build VMs immediately
+-  **Comprehensive Installation**: QEMU, libvirt, virt-manager, SPICE, and OVMF
+-  **Smart Conflict Resolution**: Fixes `iptables` conflicts by switching to nftables
+-  **Hardware Optimization**: Loads KVM modules for Intel/AMD processors
+-  **Service Management**: Enables libvirt daemon and default network
+-  **User Configuration**: Adds user to `libvirt` and `kvm` groups
+-  **Modern Boot Support**: Sets UEFI (OVMF) boot for Windows guests
+-  **Driver Integration**: Downloads VirtIO ISO for optimal guest performance
+-  **Validation & Verification**: Pre-flight checks and post-installation validation
+-  **User-Friendly**: Interactive confirmations and colored output
+-  **Error Handling**: Robust error detection and graceful failure handling
 
 ---
 
 ##  Requirements
 
-- Arch Linux (or derivative like Manjaro/EndeavourOS)
-- sudo access
-- Network connection
+**System Requirements:**
+- Arch Linux (or derivative like Manjaro/EndeavourOS/Artix)
+- Hardware virtualization support (Intel VT-x or AMD-V)
+- Minimum 4GB RAM (8GB+ recommended)
+- At least 20GB free disk space
+
+**Permissions & Network:**
+- sudo/root access
+- Active internet connection for package downloads
+- BIOS/UEFI virtualization enabled
 
 ---
 
@@ -32,8 +41,18 @@ cd Desktop
 git clone https://github.com/cxb3rf1lth/QemuVirt-Setup.git
 cd QemuVirt-Setup
 chmod +x autovirt-setup.sh
+
+# View help information
+./autovirt-setup.sh --help
+
+# Run the installer
 sudo ./autovirt-setup.sh
 ```
+
+### Script Options
+
+- `--help` or `-h`: Display help information and usage
+- `--version` or `-v`: Show version information
 
 ---
 
