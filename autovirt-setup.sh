@@ -1,4 +1,30 @@
 #!/bin/bash
+#
+# QemuVirt-Setup - Automated QEMU/KVM Virtualization Setup for Arch Linux
+#
+# This script transforms your Arch Linux system into a complete virtualization
+# environment by installing and configuring QEMU, libvirt, virt-manager, and
+# all necessary components. Perfect for malware analysis, red teaming, OS
+# sandboxing, and Windows VM optimization with SPICE, VirtIO, and UEFI support.
+#
+# Features:
+# - Installs complete virtualization stack (QEMU, libvirt, virt-manager, SPICE, OVMF)
+# - Resolves iptables conflicts by switching to nftables
+# - Configures KVM modules for Intel/AMD processors
+# - Sets up libvirt networking and user permissions
+# - Enables UEFI boot support for Windows guests
+# - Fully automated setup - just run and reboot
+#
+# Requirements:
+# - Arch Linux (or derivatives like Manjaro/EndeavourOS)
+# - sudo privileges
+# - Active internet connection
+#
+# Usage: sudo ./autovirt-setup.sh
+#
+# Author: https://github.com/cxb3rf1lth/QemuVirt-Setup
+#
+
 set -e
 
 echo "[*] Updating system..."
